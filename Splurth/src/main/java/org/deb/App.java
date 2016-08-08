@@ -46,6 +46,10 @@ public class App {
 		if (symbol.length() != 2){
 			return false;
 		}
-		return elementName.indexOf(symbol.charAt(0)) < elementName.lastIndexOf(symbol.charAt(1));
+		char firstChar = symbol.charAt(0);
+		if (elementName.indexOf(firstChar) == -1) {
+			return false;
+		}
+		return elementName.indexOf(firstChar) < elementName.lastIndexOf(symbol.charAt(1));
 	}
 }
