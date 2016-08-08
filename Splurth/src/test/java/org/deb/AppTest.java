@@ -39,5 +39,7 @@ public class AppTest
         assertFalse( App.followsRule("Stantzon", "Zt") );
         assertFalse( App.followsRule("Melintzum", "Nn") );
         assertFalse( App.followsRule("Tullium", "Ty") );
+        assertFalse( App.followsRule("অনেক", "Ty") );
+        assertFalse( App.followsRule("Tullium", "অনেক") );
     }
 }

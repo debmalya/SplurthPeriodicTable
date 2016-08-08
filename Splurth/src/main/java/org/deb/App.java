@@ -43,13 +43,28 @@ public class App {
 	public static boolean followsRule(String elementName, String symbol) {
 		elementName = elementName.toLowerCase();
 		symbol = symbol.toLowerCase();
-		if (symbol.length() != 2){
+
+		boolean a2zOnlyElementName = elementName.matches("[a-z]*");
+		boolean a2zOnlySymbolName = symbol.matches("[a-z][a-z]");
+
+		// a-z letter only
+		if (!a2zOnlyElementName || !a2zOnlySymbolName) {
 			return false;
 		}
+
+		// All chemical symbols must be exactly two letters.
+		if (symbol.length() != 2) {
+			return false;
+		}
+
+		// Checking whether first character exists or not.
 		char firstChar = symbol.charAt(0);
 		if (elementName.indexOf(firstChar) == -1) {
 			return false;
 		}
-		return elementName.indexOf(firstChar) < elementName.lastIndexOf(symbol.charAt(1));
+
+		// two letters must appear in order in the element name
+		return elementName.indexOf(firstChar) < elementName.lastIndexOf(symbol
+				.charAt(1));
 	}
 }
