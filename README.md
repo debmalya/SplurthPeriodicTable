@@ -8,5 +8,6 @@ Try to solve DZone Code Challenge Chemical Symbol-Naming One
 2. String findValidSymbol(String elementName)  
 3. int countDistinctSymbol(String elementName)
 
-###cd Splurth
-###run mvn clean package
+### Execution
+1. cd Splurth
+2. run mvn clean package
