@@ -41,5 +41,10 @@ public class AppTest
         assertFalse( App.followsRule("Tullium", "Ty") );
         assertFalse( App.followsRule("অনেক", "Ty") );
         assertFalse( App.followsRule("Tullium", "অনেক") );
+        
+        assertEquals("Ei", App.findValidSymbol("Gozerium"));
+        assertEquals("Ie", App.findValidSymbol("Slimyrine"));
+        
+        assertEquals(11,App.countDistinctSymbol("Zuulon"));
     }
 }

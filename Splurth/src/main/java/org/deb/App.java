@@ -1,5 +1,11 @@
 package org.deb;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * All chemical symbols must be exactly two letters, so B is not a valid symbol
  * for Boron.
@@ -66,5 +72,53 @@ public class App {
 		// two letters must appear in order in the element name
 		return elementName.indexOf(firstChar) < elementName.lastIndexOf(symbol
 				.charAt(1));
+	}
+
+	/**
+	 * Given an element name, find the valid symbol for that name that's first
+	 * in alphabetical order.
+	 * 
+	 * @param elementName
+	 * @return valid symbol which's first in alphabetical order.
+	 */
+	public static String findValidSymbol(String elementName) {
+		List<String> allPossibleSymbols = new ArrayList<>();
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < elementName.length() - 1; i++) {
+
+			for (int j = i + 1; j < elementName.length(); j++) {
+
+				sb.append(Character.toUpperCase(elementName.charAt(i)));
+				sb.append(Character.toLowerCase(elementName.charAt(j)));
+				allPossibleSymbols.add(sb.toString());
+				sb.delete(0, 2);
+			}
+		}
+		String[] symbols = allPossibleSymbols.toArray(new String[0]);
+		Arrays.sort(symbols);
+		return symbols[0];
+	}
+
+	/**
+	 * Given an element name, find the number of distinct valid symbols for that
+	 * name.
+	 * 
+	 * @param elementName
+	 * @return valid symbol which's first in alphabetical order.
+	 */
+	public static int countDistinctSymbol(String elementName) {
+		Set<String> allPossibleSymbols = new HashSet<>();
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < elementName.length() - 1; i++) {
+
+			for (int j = i + 1; j < elementName.length(); j++) {
+				sb.append(Character.toUpperCase(elementName.charAt(i)));
+				sb.append(Character.toLowerCase(elementName.charAt(j)));
+				allPossibleSymbols.add(sb.toString());
+				sb.delete(0, 2);
+			}
+		}
+
+		return allPossibleSymbols.size();
 	}
 }
